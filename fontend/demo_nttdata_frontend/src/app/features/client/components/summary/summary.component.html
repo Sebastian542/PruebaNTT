@@ -1,0 +1,90 @@
+<!--
+? Archivo: summary.component.html
+? Autor: Daniel Alejandro Palma Garcia
+? Correo: danielpalma2003@hotmail.com
+? Fecha: Octubre 2024
+? Empresa: NTT Data
+
+? Descripción:
+Este archivo contiene el template HTML para el componente de
+información básica del cliente en la aplicación Angular.
+Muestra los datos del cliente (apellido, nombre, teléfono,
+dirección y ciudad de residencia) en campos de texto deshabilitados,
+lo que significa que son solo de lectura.
+
+- `*ngIf="clientData"`: Verifica si hay datos del cliente disponibles antes de mostrar el formulario.
+- Cada campo está representado por un elemento `<input>` que toma su valor de `clientData`.
+- Incluye un botón "Volver" que llama a la función `goBack()` al hacer clic, permitiendo regresar a la pantalla anterior.
+-->
+
+<div
+  class="container-sm border border-primary p-3 mt-5"
+  style="max-width: 482px; background-color: #f7fbff"
+>
+  <h5>Informacion básica</h5>
+  <div *ngIf="clientData">
+    <form>
+      <div class="form-group">
+        <label for="lastName" class="text-primary mb-2 mt-4"
+          >Primer apellido</label
+        >
+        <input
+          type="text"
+          disabled
+          name="lastName"
+          class="form-control"
+          [value]="clientData.lastName"
+        />
+      </div>
+      <div class="form-group">
+        <label for="firstName" class="text-primary mb-2 mt-4"
+          >Primer nombre</label
+        >
+        <input
+          type="text"
+          disabled
+          name="firstName"
+          class="form-control"
+          [value]="clientData.firstName"
+        />
+      </div>
+      <div class="form-group">
+        <label for="phone" class="text-primary mb-2 mt-4"
+          >Numero de telefono</label
+        >
+        <input
+          type="text"
+          disabled
+          name="phone"
+          class="form-control"
+          [value]="clientData.phone"
+        />
+      </div>
+      <div class="form-group">
+        <label for="address" class="text-primary mb-2 mt-4">Dirección</label>
+        <input
+          type="text"
+          disabled
+          name="address"
+          class="form-control"
+          [value]="clientData.address"
+        />
+      </div>
+      <div class="form-group">
+        <label for="cityOfResidence" class="text-primary mb-2 mt-4"
+          >Ciudad de residencia</label
+        >
+        <input
+          type="text"
+          disabled
+          name="cityOfResidence"
+          class="form-control"
+          [value]="clientData.cityOfResidence"
+        />
+      </div>
+    </form>
+  </div>
+  <div class="text-center">
+    <button class="btn btn-primary mt-3 rounded-pill" style="min-width: 200px;" (click)="goBack()">Volver</button>
+  </div>
+</div>

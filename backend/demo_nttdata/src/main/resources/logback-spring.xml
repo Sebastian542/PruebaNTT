@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <!-- Appender para la consola -->
+  <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>[%level] [%d{yyyy-MM-dd HH:mm:ss}] - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <!-- Appender para archivo -->
+  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>logs/application.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>logs/application-%d{yyyy-MM-dd}.log</fileNamePattern>
+      <maxHistory>30</maxHistory> <!-- Mantiene logs por 30 días -->
+      <totalSizeCap>1GB</totalSizeCap> <!-- Tamaño total de los logs -->
+    </rollingPolicy>
+    <encoder>
+      <pattern>[%level] [%d{yyyy-MM-dd HH:mm:ss}] - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <!-- Configuración de los loggers -->
+  <logger name="com.example.clientservice" level="DEBUG" />
+
+  <root level="INFO">
+    <appender-ref ref="CONSOLE" />
+    <appender-ref ref="FILE" />
+  </root>
+</configuration>
